@@ -17,6 +17,7 @@
     <version>0.1-SNAPSHOT</version>
 
     <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <java.version>17</java.version>
@@ -41,6 +42,7 @@
 
     <modules>
     	<module>products</module>
+        <module>orders</module>
     </modules>
 
 
