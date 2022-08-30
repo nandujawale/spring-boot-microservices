@@ -13,9 +13,10 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @ToString
 public class Product {
-    @Id
-    private String id;
-    private String name;
-    private String description;
-    private BigDecimal price;
+
+	@Id
+	private String id;
+	private String name;
+	private String description;
+	private BigDecimal price;
 }

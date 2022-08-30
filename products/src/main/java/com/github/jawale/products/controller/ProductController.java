@@ -15,17 +15,17 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ProductController {
 
-    private final ProductService productService;
+	private final ProductService productService;
 
-    @PostMapping
-    @ResponseStatus(value = HttpStatus.OK)
-    public void addProduct(ProductRequest productRequest) {
-        productService.addProduct(productRequest);
-    }
+	@PostMapping
+	@ResponseStatus(value = HttpStatus.OK)
+	public void addProduct(ProductRequest productRequest) {
+		productService.addProduct(productRequest);
+	}
 
-    @GetMapping
-    @ResponseStatus(value = HttpStatus.OK)
-    public List<ProductResponse> getAllProducts() {
-        return productService.getAllProducts();
-    }
+	@GetMapping
+	@ResponseStatus(value = HttpStatus.OK)
+	public List<ProductResponse> getAllProducts() {
+		return productService.getAllProducts();
+	}
 }
