@@ -1,16 +1,18 @@
 package com.github.jawale.orders.dto;
 
-import lombok.Builder;
-import lombok.Value;
-
 import java.math.BigDecimal;
 
-@Builder
-@Value
-public class OrderLineItemDTO {
-    private Long id;
-    private String skuCode;
-    private BigDecimal price;
-    private Integer quantity;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class OrderLineItemDTO {
+
+	private Long id;
+	private String skuCode;
+	private BigDecimal price;
+	private Integer quantity;
 }

@@ -1,13 +1,16 @@
 package com.github.jawale.orders.dto;
 
-import lombok.*;
-
 import java.util.List;
 
-@Builder
-@Value
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class OrderRequest {
 
-    private String orderNumber;
-    private List<OrderLineItemDTO> orderLineItems;
+	private String orderNumber;
+	private List<OrderLineItemDTO> orderLineItems;
 }

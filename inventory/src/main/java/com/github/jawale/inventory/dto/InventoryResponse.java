@@ -1,12 +1,14 @@
 package com.github.jawale.inventory.dto;
 
-import lombok.Builder;
-import lombok.Value;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-@Builder
-@Value
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class InventoryResponse {
 
-    private String skuCode;
-    private boolean isInStock;
+	private String skuCode;
+	private boolean isInStock;
 }

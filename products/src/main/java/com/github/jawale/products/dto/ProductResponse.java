@@ -1,16 +1,18 @@
 package com.github.jawale.products.dto;
 
-import lombok.Builder;
-import lombok.Value;
-
 import java.math.BigDecimal;
 
-@Builder
-@Value
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class ProductResponse {
 
 	private String id;
 	private String name;
 	private String description;
-	private BigDecimal price;
+	private Double price;
 }
