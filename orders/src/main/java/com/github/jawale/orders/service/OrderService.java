@@ -20,7 +20,7 @@ import java.util.List;
 public class OrderService {
 
     private final OrderRepository orderRepository;
-    private final WebClient webClient;
+    private final WebClient.Builder webClientBuilder;
 
     public void placeOrder(OrderRequest orderRequest) {
         Order order = new Order();
@@ -32,20 +32,25 @@ public class OrderService {
                 .map(OrderLineItem::getSkuCode)
                 .toList();
 
-        InventoryResponse[] inventoryResponseArray = webClient.get()
-                .uri("http://localhost:8082/api/inventory",
+        InventoryResponse[] inventoryResponseArray = webClientBuilder.build()
+                .get()
+                .uri("http://inventory-service/api/inventory",
                         uriBuilder -> uriBuilder.queryParam("skuCodes", skuCodes).build())
                 .retrieve()
                 .bodyToMono(InventoryResponse[].class)
                 .block();
 
-        boolean allProductsInStock = Arrays.stream(inventoryResponseArray)
-                .allMatch(InventoryResponse::isInStock);
+        if (inventoryResponseArray.length > 0) {
+            boolean allProductsInStock = Arrays.stream(inventoryResponseArray)
+                    .allMatch(InventoryResponse::isInStock);
 
-        if (allProductsInStock) {
-            orderRepository.save(order);
+            if (allProductsInStock) {
+                orderRepository.save(order);
+            } else {
+                throw new IllegalArgumentException("Product is out of stock");
+            }
         } else {
-            throw new IllegalArgumentException("Product is out of stock");
+            throw new IllegalArgumentException("Product with sku codes " + skuCodes + " not available");
         }
     }
 
